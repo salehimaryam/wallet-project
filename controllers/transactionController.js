@@ -17,7 +17,6 @@ exports.decrease = async (req,res) => {
         status:'acsepted'
       });
       await wallet.update({amount:wallet.amount-price});
-      // const amount  = wallet.amount;
       res.status(200).send("ok");
       }else{
         res.status(500).send("موجودی کافی نیست");
@@ -41,7 +40,6 @@ exports.increase = async (req,res) => {
   });
 
   await wallet.update({amount:wallet.amount+price});
-  // const amount  = wallet.amount;
   res.status(200).send("ok");
   try{
     
@@ -75,8 +73,6 @@ exports.transfer =async(req,res) => {
       const reciever_wallet = await wallets.findOne({user_id:reciever._id});
       await wallet.update({amount:wallet.amount-price});
       await reciever_wallet.update({amount:reciever_wallet.amount+price});
-      // const amount  = wallet.amount;
-      // const reciever_amount  = reciever_wallet.amount;
       res.status(200).send("ok");
     }else{
       res.status(500).send("موجودی کافی نیست");
